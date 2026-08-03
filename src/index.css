@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "M PLUS Rounded 1c", "Hiragino Maru Gothic ProN", "Hiragino Sans",
+    system-ui, sans-serif;
+
+  /* light-green base palette, ポップな推し活感のアクセント */
+  --color-leaf-50: #f2fbe8;
+  --color-leaf-100: #e2f6cd;
+  --color-leaf-200: #c8eda0;
+  --color-leaf-300: #a6df6f;
+  --color-leaf-400: #8bd35a;
+  --color-leaf-500: #6fc142;
+  --color-leaf-600: #56a230;
+  --color-leaf-700: #427e26;
+  --color-leaf-800: #386423;
+  --color-leaf-900: #305321;
+
+  --color-oshi-pink: #ff8fb3;
+  --color-oshi-pink-dark: #f4638f;
+  --color-oshi-yellow: #ffd35c;
+  --color-oshi-cream: #fffbf1;
+
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.75rem;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  background: var(--color-leaf-50);
+  color: var(--color-leaf-900);
+  font-family: var(--font-sans);
+}
+
+#root {
+  min-height: 100svh;
+}
