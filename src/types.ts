@@ -7,6 +7,7 @@ export interface Campaign {
   ipName: string;
   catchCopy: string;
   mascotEmoji: string;
+  mascotImageUrl?: string;
   accent: Accent;
   totalSlots: number;
   collectedStamps: number;
@@ -19,9 +20,22 @@ export interface Product {
   campaignId: string;
   name: string;
   emoji: string;
+  imageUrl?: string;
   requiredStamps: number;
   stockTotal: number;
   stockRemaining: number;
+}
+
+export interface TargetProduct {
+  id: string;
+  campaignId: string;
+  name: string;
+  manufacturer: string;
+  category: string;
+  price: number;
+  co2ReductionGrams: number;
+  imageUrl?: string;
+  emoji: string;
 }
 
 export interface RedemptionRecord {

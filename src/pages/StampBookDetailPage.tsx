@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, Clock, Archive } from "lucide-react";
+import { ArrowLeft, Clock, Archive, Leaf, ScanLine } from "lucide-react";
 import { useAppState } from "../store/AppState";
 import { StampGrid } from "../components/StampGrid";
 import { accentClasses } from "../lib/accent";
@@ -8,7 +8,7 @@ import { daysUntil, formatDateJp } from "../lib/date";
 export function StampBookDetailPage() {
   const { campaignId } = useParams();
   const navigate = useNavigate();
-  const { campaigns, products } = useAppState();
+  const { campaigns, products, targetProducts } = useAppState();
 
   const campaign = campaigns.find((c) => c.id === campaignId);
 
@@ -32,6 +32,7 @@ export function StampBookDetailPage() {
   const milestoneSlots = products
     .filter((p) => p.campaignId === campaign.id)
     .map((p) => p.requiredStamps);
+  const campaignTargetProducts = targetProducts.filter((p) => p.campaignId === campaign.id);
 
   return (
     <div className="flex flex-1 flex-col">
@@ -45,8 +46,16 @@ export function StampBookDetailPage() {
         </button>
 
         <div className="mt-4 flex items-center gap-3">
-          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/25 text-4xl">
-            {campaign.mascotEmoji}
+          <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl bg-white/25 text-4xl">
+            {campaign.mascotImageUrl ? (
+              <img
+                src={campaign.mascotImageUrl}
+                alt=""
+                className="h-full w-full object-cover"
+              />
+            ) : (
+              campaign.mascotEmoji
+            )}
           </div>
           <div>
             <h1 className="text-xl font-extrabold">{campaign.ipName}</h1>
@@ -77,6 +86,7 @@ export function StampBookDetailPage() {
             collected={campaign.collectedStamps}
             accent={campaign.accent}
             mascotEmoji={campaign.mascotEmoji}
+            mascotImageUrl={campaign.mascotImageUrl}
             milestoneSlots={milestoneSlots}
           />
           <p className="mt-3 text-[11px] text-leaf-400">
@@ -89,6 +99,51 @@ export function StampBookDetailPage() {
           <p className="rounded-2xl bg-leaf-100 px-4 py-3 text-xs font-medium text-leaf-600">
             このスタンプ帳は期間終了のためアーカイブされました。未交換分のスタンプは失効しています。
           </p>
+        )}
+
+        {campaignTargetProducts.length > 0 && (
+          <div>
+            <div className="mb-3 flex items-center gap-1.5">
+              <ScanLine size={16} className="text-leaf-500" />
+              <h2 className="font-extrabold text-leaf-800">対象商品</h2>
+              <span className="text-xs font-medium text-leaf-400">購入してQRを読み取るとスタンプGET</span>
+            </div>
+
+            <ul className="space-y-3">
+              {campaignTargetProducts.map((product) => (
+                <li
+                  key={product.id}
+                  className="flex items-center gap-3 rounded-3xl bg-white p-3 shadow-sm ring-1 ring-leaf-100"
+                >
+                  <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-leaf-100 text-2xl">
+                    {product.imageUrl ? (
+                      <img
+                        src={product.imageUrl}
+                        alt={product.name}
+                        className="h-full w-full object-cover"
+                      />
+                    ) : (
+                      product.emoji
+                    )}
+                  </div>
+
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm font-extrabold text-leaf-800">{product.name}</p>
+                    <p className="text-xs text-leaf-500">
+                      {product.manufacturer} ・ {product.category}
+                    </p>
+                    <div className="mt-1 flex items-center gap-3 text-xs font-bold">
+                      <span className="text-leaf-700">¥{product.price.toLocaleString()}</span>
+                      <span className="flex items-center gap-0.5 text-leaf-500">
+                        <Leaf size={11} />
+                        CO2 -{product.co2ReductionGrams}g
+                      </span>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       </div>
     </div>

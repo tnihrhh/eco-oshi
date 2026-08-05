@@ -7,6 +7,7 @@ interface StampGridProps {
   collected: number;
   accent: Accent;
   mascotEmoji: string;
+  mascotImageUrl?: string;
   milestoneSlots?: number[];
 }
 
@@ -15,6 +16,7 @@ export function StampGrid({
   collected,
   accent,
   mascotEmoji,
+  mascotImageUrl,
   milestoneSlots = [],
 }: StampGridProps) {
   const classes = accentClasses[accent];
@@ -28,13 +30,21 @@ export function StampGrid({
         return (
           <div
             key={slot}
-            className={`relative flex aspect-square items-center justify-center rounded-2xl text-xl transition-transform ${
+            className={`relative flex aspect-square items-center justify-center overflow-hidden rounded-2xl text-xl transition-transform ${
               filled
                 ? `${classes.solidBg} ${classes.solidText} shadow-md scale-100`
                 : "border-2 border-dashed border-leaf-200 bg-white text-leaf-200"
             }`}
           >
-            {filled ? mascotEmoji : slot}
+            {filled ? (
+              mascotImageUrl ? (
+                <img src={mascotImageUrl} alt="" className="h-full w-full object-cover" />
+              ) : (
+                mascotEmoji
+              )
+            ) : (
+              slot
+            )}
             {isMilestone && (
               <span className="absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-white text-oshi-pink-dark shadow ring-1 ring-oshi-pink">
                 <Gift size={11} strokeWidth={2.5} />

@@ -1,6 +1,6 @@
 import { createContext, useContext, useMemo, useState, type ReactNode } from "react";
-import { initialCampaigns, initialProducts } from "../data/mockData";
-import type { Campaign, DeliveryMethod, Product, RedemptionRecord } from "../types";
+import { initialCampaigns, initialProducts, initialTargetProducts } from "../data/mockData";
+import type { Campaign, DeliveryMethod, Product, RedemptionRecord, TargetProduct } from "../types";
 
 interface ScanResult {
   ok: boolean;
@@ -11,6 +11,7 @@ interface ScanResult {
 interface AppStateValue {
   campaigns: Campaign[];
   products: Product[];
+  targetProducts: TargetProduct[];
   redemptions: RedemptionRecord[];
   addStampFromToken: (token: string) => ScanResult;
   redeemProduct: (productId: string, method: DeliveryMethod) => RedemptionRecord | null;
@@ -26,6 +27,7 @@ function generateCode() {
 export function AppStateProvider({ children }: { children: ReactNode }) {
   const [campaigns, setCampaigns] = useState<Campaign[]>(initialCampaigns);
   const [products, setProducts] = useState<Product[]>(initialProducts);
+  const [targetProducts] = useState<TargetProduct[]>(initialTargetProducts);
   const [redemptions, setRedemptions] = useState<RedemptionRecord[]>([]);
   const [usedTokens, setUsedTokens] = useState<Set<string>>(new Set());
 
@@ -82,8 +84,16 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
   const isRedeemed = (productId: string) => redemptions.some((r) => r.productId === productId);
 
   const value = useMemo(
-    () => ({ campaigns, products, redemptions, addStampFromToken, redeemProduct, isRedeemed }),
-    [campaigns, products, redemptions],
+    () => ({
+      campaigns,
+      products,
+      targetProducts,
+      redemptions,
+      addStampFromToken,
+      redeemProduct,
+      isRedeemed,
+    }),
+    [campaigns, products, targetProducts, redemptions],
   );
 
   return <AppStateContext.Provider value={value}>{children}</AppStateContext.Provider>;

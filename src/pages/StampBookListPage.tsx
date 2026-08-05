@@ -59,9 +59,17 @@ export function StampBookListPage() {
               className="flex items-center gap-3 rounded-3xl bg-white p-4 text-left shadow-sm ring-1 ring-leaf-100 active:scale-[0.98]"
             >
               <div
-                className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${classes.gradient} text-3xl shadow-inner`}
+                className={`flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br ${classes.gradient} text-3xl shadow-inner`}
               >
-                {campaign.mascotEmoji}
+                {campaign.mascotImageUrl ? (
+                  <img
+                    src={campaign.mascotImageUrl}
+                    alt=""
+                    className="h-full w-full object-cover"
+                  />
+                ) : (
+                  campaign.mascotEmoji
+                )}
               </div>
 
               <div className="flex-1 min-w-0">

@@ -40,7 +40,17 @@ export function ExchangePage() {
           return (
             <section key={campaign.id}>
               <div className="mb-2 flex items-center gap-2">
-                <span className="text-xl">{campaign.mascotEmoji}</span>
+                {campaign.mascotImageUrl ? (
+                  <span className="h-6 w-6 shrink-0 overflow-hidden rounded-full">
+                    <img
+                      src={campaign.mascotImageUrl}
+                      alt=""
+                      className="h-full w-full object-cover"
+                    />
+                  </span>
+                ) : (
+                  <span className="text-xl">{campaign.mascotEmoji}</span>
+                )}
                 <h2 className="font-extrabold text-leaf-800">{campaign.ipName}</h2>
                 <span className={`ml-auto rounded-full px-2.5 py-0.5 text-xs font-bold ${classes.chipBg} ${classes.chipText}`}>
                   保有 {campaign.collectedStamps}スタンプ
@@ -59,8 +69,16 @@ export function ExchangePage() {
                       key={product.id}
                       className="flex items-center gap-3 rounded-3xl bg-white p-4 shadow-sm ring-1 ring-leaf-100"
                     >
-                      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-leaf-100 text-3xl">
-                        {product.emoji}
+                      <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-leaf-100 text-3xl">
+                        {product.imageUrl ? (
+                          <img
+                            src={product.imageUrl}
+                            alt={product.name}
+                            className="h-full w-full object-cover"
+                          />
+                        ) : (
+                          product.emoji
+                        )}
                       </div>
 
                       <div className="min-w-0 flex-1">
