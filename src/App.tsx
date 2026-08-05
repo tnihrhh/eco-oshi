@@ -12,7 +12,7 @@ import { TargetProductDetailPage } from "./pages/TargetProductDetailPage";
 function App() {
   return (
     <AppStateProvider>
-      <div className="mx-auto flex min-h-svh w-full max-w-md flex-col bg-leaf-50 pb-20">
+      <div className="mx-auto flex h-svh w-full max-w-md flex-col overflow-hidden bg-leaf-50 pb-20">
         <Routes>
           <Route path="/" element={<Navigate to="/mypage" replace />} />
           <Route path="/mypage" element={<MyPage />} />

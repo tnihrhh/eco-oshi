@@ -73,7 +73,7 @@ export function StampBookDetailPage() {
         </p>
       </div>
 
-      <div className="flex-1 space-y-5 px-5 py-5">
+      <div className="flex-1 space-y-5 overflow-y-auto px-5 py-5">
         <div className="rounded-3xl bg-white p-5 shadow-sm ring-1 ring-leaf-100">
           <div className="mb-3 flex items-center justify-between">
             <h2 className="font-extrabold text-leaf-800">スタンプカード</h2>

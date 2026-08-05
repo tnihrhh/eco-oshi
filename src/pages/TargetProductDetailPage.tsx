@@ -47,7 +47,7 @@ export function TargetProductDetailPage() {
         </button>
       </div>
 
-      <div className="flex-1 space-y-5 px-5 py-5">
+      <div className="flex-1 space-y-5 overflow-y-auto px-5 py-5">
         <div>
           <span className={`inline-block rounded-full px-2.5 py-0.5 text-xs font-bold ${classes.chipBg} ${classes.chipText}`}>
             {campaign.ipName}

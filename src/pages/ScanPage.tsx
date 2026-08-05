@@ -65,7 +65,7 @@ export function ScanPage() {
     <div className="flex flex-1 flex-col">
       <AppHeader title="QRコードを読み取る" subtitle="対象商品のQRでスタンプGET" />
 
-      <div className="flex flex-1 flex-col items-center gap-4 px-5 py-6">
+      <div className="flex flex-1 flex-col items-center gap-4 overflow-y-auto px-5 py-6">
         <div className="relative aspect-square w-full max-w-xs overflow-hidden rounded-3xl bg-leaf-900 shadow-lg ring-4 ring-leaf-200">
           <video ref={videoRef} className="h-full w-full object-cover" muted playsInline />
           {cameraError && (
