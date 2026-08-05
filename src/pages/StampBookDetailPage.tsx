@@ -113,7 +113,8 @@ export function StampBookDetailPage() {
               {campaignTargetProducts.map((product) => (
                 <li
                   key={product.id}
-                  className="flex items-center gap-3 rounded-3xl bg-white p-3 shadow-sm ring-1 ring-leaf-100"
+                  onClick={() => navigate(`/target/${product.id}`)}
+                  className="flex items-center gap-3 rounded-3xl bg-white p-3 shadow-sm ring-1 ring-leaf-100 active:scale-[0.99]"
                 >
                   <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-leaf-100 text-2xl">
                     {product.imageUrl ? (

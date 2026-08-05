@@ -5,6 +5,8 @@ import { ScanPage } from "./pages/ScanPage";
 import { StampBookListPage } from "./pages/StampBookListPage";
 import { StampBookDetailPage } from "./pages/StampBookDetailPage";
 import { ExchangePage } from "./pages/ExchangePage";
+import { ExchangeProductDetailPage } from "./pages/ExchangeProductDetailPage";
+import { TargetProductDetailPage } from "./pages/TargetProductDetailPage";
 
 function App() {
   return (
@@ -15,7 +17,9 @@ function App() {
           <Route path="/scan" element={<ScanPage />} />
           <Route path="/stampbook" element={<StampBookListPage />} />
           <Route path="/stampbook/:campaignId" element={<StampBookDetailPage />} />
+          <Route path="/target/:productId" element={<TargetProductDetailPage />} />
           <Route path="/exchange" element={<ExchangePage />} />
+          <Route path="/exchange/:productId" element={<ExchangeProductDetailPage />} />
         </Routes>
         <BottomNav />
       </div>

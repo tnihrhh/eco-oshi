@@ -11,7 +11,7 @@ import buniBuniPopSticker from "../assets/campaigns/buni-buni-pop-sticker.jpg";
 export const initialCampaigns: Campaign[] = [
   {
     id: "meadows-blossom",
-    ipName: "Meadow's Blossom",
+    ipName: "ウサギちゃん",
     catchCopy: "お花畑からきた ふわふわうさぎ",
     mascotEmoji: "🐰",
     mascotImageUrl: meadowsBlossomCard,
@@ -23,7 +23,7 @@ export const initialCampaigns: Campaign[] = [
   },
   {
     id: "kaelen-aetherweaver",
-    ipName: "Kaelen, The Aetherweaver",
+    ipName: "まじょこ",
     catchCopy: "魔法の書をあやつる 旅する魔術師",
     mascotEmoji: "🧙‍♀️",
     mascotImageUrl: kaelenCard,
@@ -35,7 +35,7 @@ export const initialCampaigns: Campaign[] = [
   },
   {
     id: "buni-buni-pop",
-    ipName: "ぶにぶにポップ！",
+    ipName: "ぷにこ",
     catchCopy: "みんなの人気アイドル",
     mascotEmoji: "🎤",
     mascotImageUrl: buniBuniPopSticker,
@@ -51,7 +51,9 @@ export const initialProducts: Product[] = [
   {
     id: "meadows-blossom-card",
     campaignId: "meadows-blossom",
-    name: "Meadow's Blossom トレーディングカード",
+    name: "ウサギちゃん トレーディングカード",
+    description:
+      "お花畑を駆け回るウサギちゃんを描いたコレクターズカード。ステータス風のデザインで、飾っても集めても楽しい一枚です。",
     emoji: "🐰",
     imageUrl: meadowsBlossomCard,
     requiredStamps: 3,
@@ -61,7 +63,9 @@ export const initialProducts: Product[] = [
   {
     id: "meadows-blossom-panel",
     campaignId: "meadows-blossom",
-    name: "Meadow's Blossom フレームパネル",
+    name: "ウサギちゃん フレームパネル",
+    description:
+      "アンティーク調の金縁フレームに入った飾りパネル。お部屋に飾ってウサギちゃんをいつも身近に感じられます。",
     emoji: "🖼️",
     imageUrl: meadowsBlossomPanel,
     requiredStamps: 6,
@@ -71,7 +75,8 @@ export const initialProducts: Product[] = [
   {
     id: "meadows-blossom-keychain",
     campaignId: "meadows-blossom",
-    name: "Meadow's Blossom チャームキーホルダー",
+    name: "ウサギちゃん チャームキーホルダー",
+    description: "バッグや鍵につけられる立体チャームキーホルダー。数量限定の特別デザインです。",
     emoji: "🔑",
     imageUrl: meadowsBlossomKeychain,
     requiredStamps: 10,
@@ -81,7 +86,8 @@ export const initialProducts: Product[] = [
   {
     id: "kaelen-card",
     campaignId: "kaelen-aetherweaver",
-    name: "呪文書デザインカード",
+    name: "まじょこ 呪文書デザインカード",
+    description: "まじょこが操る魔導書をモチーフにしたカード。呪文とステータスが描かれた凝ったデザインです。",
     emoji: "📜",
     imageUrl: kaelenCard,
     requiredStamps: 2,
@@ -91,7 +97,8 @@ export const initialProducts: Product[] = [
   {
     id: "kaelen-book",
     campaignId: "kaelen-aetherweaver",
-    name: "レザーブックカバーノート",
+    name: "まじょこ レザーブックカバーノート",
+    description: "まじょこの魔導書をイメージしたレザー調ノート。日々の記録も魔法の一冊にしてくれます。",
     emoji: "📕",
     imageUrl: kaelenBook,
     requiredStamps: 5,
@@ -101,7 +108,8 @@ export const initialProducts: Product[] = [
   {
     id: "kaelen-keychain",
     campaignId: "kaelen-aetherweaver",
-    name: "アクリルキーホルダー",
+    name: "まじょこ アクリルキーホルダー",
+    description: "本を抱えたまじょこのアクリルキーホルダー。カバンにつけて相棒気分を味わえます。",
     emoji: "🔑",
     imageUrl: kaelenKeychain,
     requiredStamps: 8,
@@ -115,6 +123,8 @@ export const initialTargetProducts: TargetProduct[] = [
     id: "meadows-blossom-milk",
     campaignId: "meadows-blossom",
     name: "低炭素紙パック牛乳",
+    description:
+      "森林認証紙を使用した軽量パッケージを採用し、製造・輸送時のCO2排出を抑えた牛乳です。毎日の一杯で、無理なくエコな選択ができます。",
     manufacturer: "テスト乳業",
     category: "乳製品",
     price: 218,
@@ -128,6 +138,8 @@ export const initialTargetProducts: TargetProduct[] = [
     id: "meadows-blossom-detergent",
     campaignId: "meadows-blossom",
     name: "詰め替え用洗剤（濃縮タイプ）",
+    description:
+      "濃縮タイプで容器の使用量を削減。詰め替えパックの採用でプラスチックごみも減らせる、環境にやさしい洗剤です。",
     manufacturer: "グリーンクリーン",
     category: "日用品",
     price: 398,
@@ -138,6 +150,8 @@ export const initialTargetProducts: TargetProduct[] = [
     id: "kaelen-tea",
     campaignId: "kaelen-aetherweaver",
     name: "オーガニック緑茶ペットボトル（軽量ボトル）",
+    description:
+      "有機栽培の茶葉を使用し、ボトルを軽量化することで輸送時のCO2排出を削減しました。すっきりとした味わいのオーガニック緑茶です。",
     manufacturer: "海と大地の飲料",
     category: "飲料",
     price: 158,
@@ -148,6 +162,8 @@ export const initialTargetProducts: TargetProduct[] = [
     id: "kaelen-rice",
     campaignId: "kaelen-aetherweaver",
     name: "スマート農法米 2kg",
+    description:
+      "センサーを活用した精密農業により、化学肥料の使用量と圃場からの温室効果ガス排出を抑えて栽培したお米です。",
     manufacturer: "テスト農園",
     category: "食品",
     price: 980,

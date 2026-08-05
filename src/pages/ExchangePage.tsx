@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Store, Truck, X, CheckCircle2, PackageX } from "lucide-react";
 import { AppHeader } from "../components/AppHeader";
 import { useAppState } from "../store/AppState";
@@ -13,6 +14,7 @@ type ModalStep =
 export function ExchangePage() {
   const { campaigns, products, redeemProduct, isRedeemed } = useAppState();
   const [modal, setModal] = useState<ModalStep | null>(null);
+  const navigate = useNavigate();
 
   const activeCampaigns = campaigns.filter((c) => c.status === "active");
 
@@ -67,7 +69,8 @@ export function ExchangePage() {
                   return (
                     <div
                       key={product.id}
-                      className="flex items-center gap-3 rounded-3xl bg-white p-4 shadow-sm ring-1 ring-leaf-100"
+                      onClick={() => navigate(`/exchange/${product.id}`)}
+                      className="flex items-center gap-3 rounded-3xl bg-white p-4 shadow-sm ring-1 ring-leaf-100 active:scale-[0.99]"
                     >
                       <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-leaf-100 text-3xl">
                         {product.imageUrl ? (
@@ -101,7 +104,10 @@ export function ExchangePage() {
                       <button
                         type="button"
                         disabled={!enough || soldOut || redeemed}
-                        onClick={() => setModal({ step: "select", product })}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setModal({ step: "select", product });
+                        }}
                         className={`shrink-0 rounded-2xl px-3.5 py-2 text-xs font-bold transition-transform active:scale-95 ${
                           redeemed
                             ? "bg-leaf-100 text-leaf-400"

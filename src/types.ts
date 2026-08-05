@@ -19,6 +19,7 @@ export interface Product {
   id: string;
   campaignId: string;
   name: string;
+  description: string;
   emoji: string;
   imageUrl?: string;
   requiredStamps: number;
@@ -30,6 +31,7 @@ export interface TargetProduct {
   id: string;
   campaignId: string;
   name: string;
+  description: string;
   manufacturer: string;
   category: string;
   price: number;
