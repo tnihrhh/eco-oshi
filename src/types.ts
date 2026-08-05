@@ -46,3 +46,17 @@ export interface RedemptionRecord {
   code: string;
   redeemedAt: string;
 }
+
+export interface OshiArt {
+  id: string;
+  title: string;
+  imageUrl: string;
+}
+
+export interface UserProfile {
+  nickname: string;
+  userId: string;
+  totalCo2ReductionGrams: number;
+  monthlyCo2ReductionGrams: number;
+  favoriteArt: OshiArt;
+}

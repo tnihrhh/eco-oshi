@@ -1,7 +1,8 @@
 import { NavLink } from "react-router-dom";
-import { QrCode, BookHeart, Gift } from "lucide-react";
+import { QrCode, BookHeart, Gift, User } from "lucide-react";
 
 const tabs = [
+  { to: "/mypage", label: "マイページ", icon: User },
   { to: "/scan", label: "QR読み取り", icon: QrCode },
   { to: "/stampbook", label: "スタンプ帳", icon: BookHeart },
   { to: "/exchange", label: "商品交換", icon: Gift },

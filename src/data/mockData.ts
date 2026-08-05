@@ -1,4 +1,4 @@
-import type { Campaign, Product, TargetProduct } from "../types";
+import type { Campaign, Product, TargetProduct, UserProfile } from "../types";
 
 import meadowsBlossomCard from "../assets/campaigns/meadows-blossom-card.jpg";
 import meadowsBlossomPanel from "../assets/campaigns/meadows-blossom-panel.jpg";
@@ -7,6 +7,7 @@ import kaelenCard from "../assets/campaigns/kaelen-card.jpg";
 import kaelenBook from "../assets/campaigns/kaelen-book.jpg";
 import kaelenKeychain from "../assets/campaigns/kaelen-keychain.jpg";
 import buniBuniPopSticker from "../assets/campaigns/buni-buni-pop-sticker.jpg";
+import oshiArtSleepingCat from "../assets/mypage/oshi-art-sleeping-cat.jpg";
 
 export const initialCampaigns: Campaign[] = [
   {
@@ -171,3 +172,15 @@ export const initialTargetProducts: TargetProduct[] = [
     emoji: "🌾",
   },
 ];
+
+export const initialUserProfile: UserProfile = {
+  nickname: "みどりの旅人",
+  userId: "ECO-0042931",
+  totalCo2ReductionGrams: 8420,
+  monthlyCo2ReductionGrams: 1230,
+  favoriteArt: {
+    id: "sleeping-cat-under-tree",
+    title: "大樹の下でひとやすみ",
+    imageUrl: oshiArtSleepingCat,
+  },
+};
